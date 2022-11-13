@@ -2,11 +2,12 @@
 
 namespace Core.Domain.Security
 {
-    [Table("SecurityUserRole", Schema = "dbo")]
+    [Table(TableName)]
     public class SecurityUserRole : BaseEntity
     {
-        //[Key]
-        //public int SecurityUserRoleId { get; set; }
+        [NotMapped]
+        public const string TableName = "SecurityUserRole";
+
         public int UserId { get; set; }
         public int SecurityRoleId { get; set; }
 

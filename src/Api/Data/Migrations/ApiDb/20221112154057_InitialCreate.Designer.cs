@@ -4,6 +4,7 @@ using Api.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Api.Data.Migrations.ApiDb
 {
     [DbContext(typeof(ApiDbContext))]
-    partial class ApiDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221112154057_InitialCreate")]
+    partial class InitialCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -2019,7 +2021,7 @@ namespace Api.Data.Migrations.ApiDb
                     b.HasOne("Core.Domain.Auditing.AuditableEntity", "AuditableEntity")
                         .WithMany("AuditableAttributes")
                         .HasForeignKey("AuditableEntityId")
-                        //.OnDelete(DeleteBehavior.Cascade
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("AuditableEntity");
@@ -2030,7 +2032,7 @@ namespace Api.Data.Migrations.ApiDb
                     b.HasOne("Core.Domain.Company", "Company")
                         .WithMany()
                         .HasForeignKey("CompanyId")
-                        //.OnDelete(DeleteBehavior.Cascade
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Company");
@@ -2041,7 +2043,7 @@ namespace Api.Data.Migrations.ApiDb
                     b.HasOne("Core.Domain.Party", "Party")
                         .WithMany("Contacts")
                         .HasForeignKey("PartyId")
-                        //.OnDelete(DeleteBehavior.Cascade
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Party");
@@ -2052,13 +2054,13 @@ namespace Api.Data.Migrations.ApiDb
                     b.HasOne("Core.Domain.Contact", "Contact")
                         .WithMany()
                         .HasForeignKey("ContactId")
-                        //.OnDelete(DeleteBehavior.Cascade
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Core.Domain.Sales.Customer", "Customer")
                         .WithMany("CustomerContact")
                         .HasForeignKey("CustomerId")
-                        //.OnDelete(DeleteBehavior.Cascade
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Contact");
@@ -2071,13 +2073,13 @@ namespace Api.Data.Migrations.ApiDb
                     b.HasOne("Core.Domain.Financials.AccountClass", "AccountClass")
                         .WithMany("Accounts")
                         .HasForeignKey("AccountClassId")
-                        //.OnDelete(DeleteBehavior.Cascade
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Core.Domain.Company", "Company")
                         .WithMany()
                         .HasForeignKey("CompanyId")
-                        //.OnDelete(DeleteBehavior.Cascade
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Core.Domain.Financials.Account", "ParentAccount")
@@ -2105,13 +2107,13 @@ namespace Api.Data.Migrations.ApiDb
                     b.HasOne("Core.Domain.Financials.Account", "Account")
                         .WithMany("GeneralLedgerLines")
                         .HasForeignKey("AccountId")
-                        //.OnDelete(DeleteBehavior.Cascade
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Core.Domain.Financials.GeneralLedgerHeader", "GeneralLedgerHeader")
                         .WithMany("GeneralLedgerLines")
                         .HasForeignKey("GeneralLedgerHeaderId")
-                        //.OnDelete(DeleteBehavior.Cascade
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Account");
@@ -2190,13 +2192,13 @@ namespace Api.Data.Migrations.ApiDb
                     b.HasOne("Core.Domain.Financials.Account", "Account")
                         .WithMany()
                         .HasForeignKey("AccountId")
-                        //.OnDelete(DeleteBehavior.Cascade
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Core.Domain.Financials.JournalEntryHeader", "JournalEntryHeader")
                         .WithMany("JournalEntryLines")
                         .HasForeignKey("JournalEntryHeaderId")
-                        //.OnDelete(DeleteBehavior.Cascade
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Account");
@@ -2228,13 +2230,13 @@ namespace Api.Data.Migrations.ApiDb
                     b.HasOne("Core.Domain.Items.Item", "Item")
                         .WithMany("InventoryControlJournals")
                         .HasForeignKey("ItemId")
-                        //.OnDelete(DeleteBehavior.Cascade
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Core.Domain.Items.Measurement", "Measurement")
                         .WithMany()
                         .HasForeignKey("MeasurementId")
-                        //.OnDelete(DeleteBehavior.Cascade
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Item");
@@ -2368,19 +2370,19 @@ namespace Api.Data.Migrations.ApiDb
                     b.HasOne("Core.Domain.Items.Item", "Item")
                         .WithMany("PurchaseInvoiceLines")
                         .HasForeignKey("ItemId")
-                        //.OnDelete(DeleteBehavior.Cascade
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Core.Domain.Items.Measurement", "Measurement")
                         .WithMany()
                         .HasForeignKey("MeasurementId")
-                        //.OnDelete(DeleteBehavior.Cascade
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Core.Domain.Purchases.PurchaseInvoiceHeader", "PurchaseInvoiceHeader")
                         .WithMany("PurchaseInvoiceLines")
                         .HasForeignKey("PurchaseInvoiceHeaderId")
-                        //.OnDelete(DeleteBehavior.Cascade
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Core.Domain.Purchases.PurchaseOrderLine", "PurchaseOrderLine")
@@ -2416,19 +2418,19 @@ namespace Api.Data.Migrations.ApiDb
                     b.HasOne("Core.Domain.Items.Item", "Item")
                         .WithMany("PurchaseOrderLines")
                         .HasForeignKey("ItemId")
-                        //.OnDelete(DeleteBehavior.Cascade
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Core.Domain.Items.Measurement", "Measurement")
                         .WithMany()
                         .HasForeignKey("MeasurementId")
-                        //.OnDelete(DeleteBehavior.Cascade
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Core.Domain.Purchases.PurchaseOrderHeader", "PurhcaseOrderHeader")
                         .WithMany("PurchaseOrderLines")
                         .HasForeignKey("PurchaseOrderHeaderId")
-                        //.OnDelete(DeleteBehavior.Cascade
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Item");
@@ -2447,7 +2449,7 @@ namespace Api.Data.Migrations.ApiDb
                     b.HasOne("Core.Domain.Purchases.Vendor", "Vendor")
                         .WithMany("PurchaseReceipts")
                         .HasForeignKey("VendorId")
-                        //.OnDelete(DeleteBehavior.Cascade
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("GeneralLedgerHeader");
@@ -2464,13 +2466,13 @@ namespace Api.Data.Migrations.ApiDb
                     b.HasOne("Core.Domain.Items.Item", "Item")
                         .WithMany("PurchaseReceiptLines")
                         .HasForeignKey("ItemId")
-                        //.OnDelete(DeleteBehavior.Cascade
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Core.Domain.Items.Measurement", "Measurement")
                         .WithMany()
                         .HasForeignKey("MeasurementId")
-                        //.OnDelete(DeleteBehavior.Cascade
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Core.Domain.Purchases.PurchaseInvoiceLine", "PurchaseInvoiceLine")
@@ -2480,7 +2482,7 @@ namespace Api.Data.Migrations.ApiDb
                     b.HasOne("Core.Domain.Purchases.PurchaseReceiptHeader", "PurchaseReceiptHeader")
                         .WithMany("PurchaseReceiptLines")
                         .HasForeignKey("PurchaseReceiptHeaderId")
-                        //.OnDelete(DeleteBehavior.Cascade
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("InventoryControlJournal");
@@ -2552,7 +2554,7 @@ namespace Api.Data.Migrations.ApiDb
                     b.HasOne("Core.Domain.Purchases.Vendor", "Vendor")
                         .WithMany("VendorPayments")
                         .HasForeignKey("VendorId")
-                        //.OnDelete(DeleteBehavior.Cascade
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("GeneralLedgerHeader");
@@ -2680,7 +2682,7 @@ namespace Api.Data.Migrations.ApiDb
                     b.HasOne("Core.Domain.Sales.SalesDeliveryHeader", "SalesDeliveryHeader")
                         .WithMany("SalesDeliveryLines")
                         .HasForeignKey("SalesDeliveryHeaderId")
-                        //.OnDelete(DeleteBehavior.Cascade
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Core.Domain.Sales.SalesInvoiceLine", "SalesInvoiceLine")
@@ -2701,7 +2703,7 @@ namespace Api.Data.Migrations.ApiDb
                     b.HasOne("Core.Domain.Sales.Customer", "Customer")
                         .WithMany("SalesInvoices")
                         .HasForeignKey("CustomerId")
-                        //.OnDelete(DeleteBehavior.Cascade
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Core.Domain.Financials.GeneralLedgerHeader", "GeneralLedgerHeader")
@@ -2722,19 +2724,19 @@ namespace Api.Data.Migrations.ApiDb
                     b.HasOne("Core.Domain.Items.Item", "Item")
                         .WithMany("SalesInvoiceLines")
                         .HasForeignKey("ItemId")
-                        //.OnDelete(DeleteBehavior.Cascade
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Core.Domain.Items.Measurement", "Measurement")
                         .WithMany()
                         .HasForeignKey("MeasurementId")
-                        //.OnDelete(DeleteBehavior.Cascade
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Core.Domain.Sales.SalesInvoiceHeader", "SalesInvoiceHeader")
                         .WithMany("SalesInvoiceLines")
                         .HasForeignKey("SalesInvoiceHeaderId")
-                        //.OnDelete(DeleteBehavior.Cascade
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Core.Domain.Sales.SalesOrderLine", "SalesOrderLine")
@@ -2772,19 +2774,19 @@ namespace Api.Data.Migrations.ApiDb
                     b.HasOne("Core.Domain.Items.Item", "Item")
                         .WithMany()
                         .HasForeignKey("ItemId")
-                        //.OnDelete(DeleteBehavior.Cascade
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Core.Domain.Items.Measurement", "Measurement")
                         .WithMany()
                         .HasForeignKey("MeasurementId")
-                        //.OnDelete(DeleteBehavior.Cascade
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Core.Domain.Sales.SalesOrderHeader", "SalesOrderHeader")
                         .WithMany("SalesOrderLines")
                         .HasForeignKey("SalesOrderHeaderId")
-                        //.OnDelete(DeleteBehavior.Cascade
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Item");
@@ -2799,7 +2801,7 @@ namespace Api.Data.Migrations.ApiDb
                     b.HasOne("Core.Domain.Sales.Customer", "Customer")
                         .WithMany()
                         .HasForeignKey("CustomerId")
-                        //.OnDelete(DeleteBehavior.Cascade
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Customer");
@@ -2810,19 +2812,19 @@ namespace Api.Data.Migrations.ApiDb
                     b.HasOne("Core.Domain.Items.Item", "Item")
                         .WithMany()
                         .HasForeignKey("ItemId")
-                        //.OnDelete(DeleteBehavior.Cascade
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Core.Domain.Items.Measurement", "Measurement")
                         .WithMany()
                         .HasForeignKey("MeasurementId")
-                        //.OnDelete(DeleteBehavior.Cascade
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Core.Domain.Sales.SalesQuoteHeader", "SalesQuoteHeader")
                         .WithMany("SalesQuoteLines")
                         .HasForeignKey("SalesQuoteHeaderId")
-                        //.OnDelete(DeleteBehavior.Cascade
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Item");
@@ -2841,7 +2843,7 @@ namespace Api.Data.Migrations.ApiDb
                     b.HasOne("Core.Domain.Sales.Customer", "Customer")
                         .WithMany("SalesReceipts")
                         .HasForeignKey("CustomerId")
-                        //.OnDelete(DeleteBehavior.Cascade
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Core.Domain.Financials.GeneralLedgerHeader", "GeneralLedgerHeader")
@@ -2868,7 +2870,7 @@ namespace Api.Data.Migrations.ApiDb
                     b.HasOne("Core.Domain.Sales.SalesReceiptHeader", "SalesReceiptHeader")
                         .WithMany("SalesReceiptLines")
                         .HasForeignKey("SalesReceiptHeaderId")
-                        //.OnDelete(DeleteBehavior.Cascade
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("AccountToCredit");
@@ -2883,7 +2885,7 @@ namespace Api.Data.Migrations.ApiDb
                     b.HasOne("Core.Domain.Security.SecurityGroup", "Group")
                         .WithMany("Permissions")
                         .HasForeignKey("SecurityGroupId")
-                        //.OnDelete(DeleteBehavior.Cascade
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Group");
@@ -2894,13 +2896,13 @@ namespace Api.Data.Migrations.ApiDb
                     b.HasOne("Core.Domain.Security.SecurityPermission", "SecurityPermission")
                         .WithMany("RolePermissions")
                         .HasForeignKey("SecurityPermissionId")
-                        //.OnDelete(DeleteBehavior.Cascade
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Core.Domain.Security.SecurityRole", "SecurityRole")
                         .WithMany("Permissions")
                         .HasForeignKey("SecurityRoleId")
-                        //.OnDelete(DeleteBehavior.Cascade
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("SecurityPermission");
@@ -2913,13 +2915,13 @@ namespace Api.Data.Migrations.ApiDb
                     b.HasOne("Core.Domain.Security.SecurityRole", "SecurityRole")
                         .WithMany("Users")
                         .HasForeignKey("SecurityRoleId")
-                        //.OnDelete(DeleteBehavior.Cascade
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Core.Domain.Security.User", "User")
                         .WithMany("Roles")
                         .HasForeignKey("UserId")
-                        //.OnDelete(DeleteBehavior.Cascade
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("SecurityRole");
@@ -2932,13 +2934,13 @@ namespace Api.Data.Migrations.ApiDb
                     b.HasOne("Core.Domain.TaxSystem.ItemTaxGroup", "ItemTaxGroup")
                         .WithMany("ItemTaxGroupTax")
                         .HasForeignKey("ItemTaxGroupId")
-                        //.OnDelete(DeleteBehavior.Cascade
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Core.Domain.TaxSystem.Tax", "Tax")
                         .WithMany("ItemTaxGroupTaxes")
                         .HasForeignKey("TaxId")
-                        //.OnDelete(DeleteBehavior.Cascade
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("ItemTaxGroup");
@@ -2966,13 +2968,13 @@ namespace Api.Data.Migrations.ApiDb
                     b.HasOne("Core.Domain.TaxSystem.TaxGroup", "TaxGroup")
                         .WithMany("TaxGroupTax")
                         .HasForeignKey("TaxGroupId")
-                        //.OnDelete(DeleteBehavior.Cascade
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Core.Domain.TaxSystem.Tax", "Tax")
                         .WithMany("TaxGroupTaxes")
                         .HasForeignKey("TaxId")
-                        //.OnDelete(DeleteBehavior.Cascade
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Tax");
@@ -2985,13 +2987,13 @@ namespace Api.Data.Migrations.ApiDb
                     b.HasOne("Core.Domain.Contact", "Contact")
                         .WithMany()
                         .HasForeignKey("ContactId")
-                        //.OnDelete(DeleteBehavior.Cascade
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Core.Domain.Purchases.Vendor", "Vendor")
                         .WithMany("VendorContact")
                         .HasForeignKey("VendorId")
-                        //.OnDelete(DeleteBehavior.Cascade
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Contact");

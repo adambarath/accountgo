@@ -4,15 +4,17 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Core.Domain.Security
 {
-    [Table("User", Schema = "dbo")]
+    [Table(TableName)]
     public class User : BaseEntity
     {
+        [NotMapped]
+        public const string TableName = "User";
+
         public User()
         {
             Roles = new HashSet<SecurityUserRole>();
         }
-        //[Key]
-        //public int UserId { get; set; }
+
         public string UserName { get; set; }
         public string EmailAddress { get; set; }
         public string Firstname { get; set; }

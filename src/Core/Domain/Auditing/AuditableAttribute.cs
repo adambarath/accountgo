@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Core.Domain.Auditing
 {
-    [Table("AuditableAttribute", Schema = "dbo")]
+    [Table("AuditableAttribute")]
     public class AuditableAttribute : BaseEntity
     {
         //[NotMapped]

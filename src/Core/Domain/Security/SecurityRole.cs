@@ -4,11 +4,12 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Core.Domain.Security
 {
-    [Table("SecurityRole", Schema = "dbo")]
+    [Table(TableName)]
     public class SecurityRole : BaseEntity
     {
-        //[Key]
-        //public int SecurityRoleId { get; set; }
+        [NotMapped]
+        public const string TableName = "SecurityRole";
+
         public string Name { get; set; }
         public string DisplayName { get; set; }
         public bool SysAdmin { get; set; }

@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace Core.Domain.Auditing
 {
-    [Table("AuditableEntity", Schema = "dbo")]
+    [Table("AuditableEntity")]
     public class AuditableEntity : BaseEntity
     {
         //[NotMapped]

@@ -3,11 +3,12 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Core.Domain.Security
 {
-    [Table("SecurityPermission", Schema = "dbo")]
+    [Table(TableName)]
     public class SecurityPermission : BaseEntity
     {
-        //[Key]
-        //public int SecurityPermissionId { get; set; }
+        [NotMapped]
+        public const string TableName = "SecurityPermission";
+
         public string Name { get; set; }
         public string DisplayName { get; set; }
         public int SecurityGroupId { get; set; }

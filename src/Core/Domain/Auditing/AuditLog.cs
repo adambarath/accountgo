@@ -10,7 +10,7 @@ namespace Core.Domain.Auditing
         Modified = 3
     }
 
-    [Table("AuditLog", Schema = "dbo")]
+    [Table("AuditLog")]
     public class AuditLog : BaseEntity
     {
         ////[Key]

@@ -5,6 +5,8 @@ namespace Api.Data
 {
     public class ApplicationIdentityDbContext : IdentityDbContext<ApplicationUser>
     {
+        public const string DefaultSchema = "idt";
+
         public ApplicationIdentityDbContext(DbContextOptions<ApplicationIdentityDbContext> options)
             : base(options)
         {
@@ -12,6 +14,8 @@ namespace Api.Data
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
+            builder.HasDefaultSchema(DefaultSchema);
+
             base.OnModelCreating(builder);
         }
     }
